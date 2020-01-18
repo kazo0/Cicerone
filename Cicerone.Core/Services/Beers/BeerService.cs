@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Cicerone.Clients.Untappd;
-using Cicerone.Models;
+using Cicerone.Core.Clients.Untappd;
+using Cicerone.Core.Models;
 
-namespace Cicerone.Services.Beers
+namespace Cicerone.Core.Services.Beers
 {
 	public class BeerService : IBeerService
 	{

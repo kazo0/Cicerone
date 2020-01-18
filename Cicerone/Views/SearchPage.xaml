@@ -1,14 +1,30 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage x:Class="Cicerone.Views.SearchPage"
-             xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             Title="Search"
-             ios:Page.UseSafeArea="true">
-    <SearchBar x:Name="searchBar"
-               Placeholder="Search for a brew"
-               VerticalOptions="Start"
-               FontSize="Medium"
-               SearchCommand="{Binding SearchCommand}"
-               SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
-</ContentPage>
+<views:MvxContentPage x:Class="Cicerone.Views.SearchPage"
+                      xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:viewModels="clr-namespace:Cicerone.Core.ViewModels"
+                      Title="Search"
+                      x:TypeArguments="viewModels:SearchViewModel"
+                      ios:Page.UseSafeArea="true">
+    <StackLayout>
+        <SearchBar x:Name="searchBar"
+                   Placeholder="Search for a brew"
+                   VerticalOptions="Start"
+                   FontSize="Medium"
+                   SearchCommand="{Binding SearchCommand}"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
+        <CollectionView ItemsSource="{Binding Beers}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView>
+                        <Frame Margin="10">
+                            <Label Text="{Binding BeerName}" />
+                        </Frame>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</views:MvxContentPage>

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Cicerone.Models;
+using Cicerone.Core.Models;
 
-namespace Cicerone.Clients.Untappd
+namespace Cicerone.Core.Clients.Untappd
 {
 	public interface IUntappdClient
 	{

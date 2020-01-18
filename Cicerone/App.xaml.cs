@@ -10,21 +10,6 @@ namespace Cicerone
 		public App()
 		{
 			InitializeComponent();
-			Startup.Init();
-
-			MainPage = new SearchPage();
-		}
-
-		protected override void OnStart()
-		{
-		}
-
-		protected override void OnSleep()
-		{
-		}
-
-		protected override void OnResume()
-		{
 		}
 	}
 }

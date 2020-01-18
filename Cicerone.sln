@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cicerone.iOS", "Cicerone.iO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cicerone", "Cicerone\Cicerone.csproj", "{4730CAC5-9F8A-4619-92E0-0CEC0CEC65CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cicerone.Core", "Cicerone.Core\Cicerone.Core.csproj", "{958EF85F-CE10-4A40-B231-0B8D19D4EA11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,5 +55,17 @@ Global
 		{4730CAC5-9F8A-4619-92E0-0CEC0CEC65CC}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{4730CAC5-9F8A-4619-92E0-0CEC0CEC65CC}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{4730CAC5-9F8A-4619-92E0-0CEC0CEC65CC}.Release|iPhone.Build.0 = Release|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{958EF85F-CE10-4A40-B231-0B8D19D4EA11}.Release|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

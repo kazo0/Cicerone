@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Cicerone.Models;
+using Cicerone.Core.Models;
 
-namespace Cicerone.Services.Beers
+namespace Cicerone.Core.Services.Beers
 {
 	public interface IBeerService
 	{

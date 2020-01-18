@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using Cicerone.ViewModels;
-using Microsoft.Extensions.DependencyInjection;
+using Cicerone.Core.ViewModels;
+using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 
 namespace Cicerone.Views
 {
-	public partial class SearchPage : ContentPage
+	public partial class SearchPage : MvxContentPage<SearchViewModel>
 	{
 		public SearchPage()
 		{
 			
 			InitializeComponent();
-			BindingContext = Startup.ServiceProvider.GetService<SearchViewModel>();
 		}
 	}
 }

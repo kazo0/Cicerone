@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Serialization.Json;
 
-namespace Cicerone.Clients
+namespace Cicerone.Core.Clients
 {
 	public abstract class BaseApiClient
 	{

@@ -124,12 +124,19 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991477" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="MvvmCross.Forms">
+      <Version>6.4.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Cicerone\Cicerone.csproj">
       <Project>{4730CAC5-9F8A-4619-92E0-0CEC0CEC65CC}</Project>
       <Name>Cicerone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cicerone.Core\Cicerone.Core.csproj">
+      <Project>{958EF85F-CE10-4A40-B231-0B8D19D4EA11}</Project>
+      <Name>Cicerone.Core</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

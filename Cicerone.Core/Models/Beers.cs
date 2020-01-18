@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Cicerone.Models
+namespace Cicerone.Core.Models
 {
     public partial class Beers
     {

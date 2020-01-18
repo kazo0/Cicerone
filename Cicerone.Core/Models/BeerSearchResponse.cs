@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Cicerone.Models
+namespace Cicerone.Core.Models
 {
     public class BeerSearchResponse
     {

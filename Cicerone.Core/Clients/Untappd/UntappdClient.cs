@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Cicerone.Models;
+using Cicerone.Core.Models;
 using RestSharp;
 using RestSharp.Authenticators;
 using Xamarin.Essentials;
 
-namespace Cicerone.Clients.Untappd
+namespace Cicerone.Core.Clients.Untappd
 {
 	public class UntappdClient : BaseApiClient, IUntappdClient
 	{
