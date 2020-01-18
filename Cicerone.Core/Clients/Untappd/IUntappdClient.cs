@@ -7,5 +7,7 @@ namespace Cicerone.Core.Clients.Untappd
 	public interface IUntappdClient
 	{
 		Task<BeerSearchResponse> SearchBeer(string term);
+
+		Task<BeerDetailsResponse> GetBeerDetails(long beerId);
 	}
 }

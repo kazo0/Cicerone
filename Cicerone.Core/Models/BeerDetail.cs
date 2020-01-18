@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Cicerone.Core.Models
 {
-    public class Beer
+    public partial class BeerDetail
     {
         [JsonProperty("bid")]
         public long Bid { get; set; }
@@ -14,31 +14,28 @@ namespace Cicerone.Core.Models
         [JsonProperty("beer_label")]
         public Uri BeerLabel { get; set; }
 
+        [JsonProperty("beer_label_hd")]
+        public Uri BeerLabelHd { get; set; }
+
         [JsonProperty("beer_abv")]
         public double BeerAbv { get; set; }
 
-        [JsonProperty("beer_slug")]
-        public string BeerSlug { get; set; }
-
         [JsonProperty("beer_ibu")]
-        public long BeerIbu { get; set; }
+        public double BeerIbu { get; set; }
 
         [JsonProperty("beer_description")]
         public string BeerDescription { get; set; }
 
-        [JsonProperty("created_at")]
-        public string CreatedAt { get; set; }
-
         [JsonProperty("beer_style")]
         public string BeerStyle { get; set; }
 
-        [JsonProperty("in_production")]
-        public long InProduction { get; set; }
+        [JsonProperty("is_in_production")]
+        public long IsInProduction { get; set; }
 
-        [JsonProperty("auth_rating")]
-        public long AuthRating { get; set; }
+        [JsonProperty("brewery")]
+        public Brewery Brewery { get; set; }
 
-        [JsonProperty("wish_list")]
-        public bool WishList { get; set; }
+        [JsonProperty("beer_active")]
+        public long BeerActive { get; set; }
     }
 }

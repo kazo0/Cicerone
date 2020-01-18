@@ -16,14 +16,21 @@ namespace Cicerone.Core.Services.Beers
 			_untappdClient = untappdClient;
 		}
 
-		public async Task<List<Beer>> SearchBeer(string searchTerm)
+		public async Task<BeerDetail> GetBeerDetails(long beerId)
+		{
+			var beerResponse = await _untappdClient.GetBeerDetails(beerId);
+
+			return beerResponse?.Beer;
+		}
+
+		public async Task<List<BeerSummary>> GetBeers(string searchTerm)
 		{
 			var searchResponse = await _untappdClient.SearchBeer(searchTerm);
 
 			return searchResponse?.Beers
 				?.BeerItems
 				?.Select(x => x.Beer)
-				.ToList() ?? new List<Beer>();
+				.ToList() ?? new List<BeerSummary>();
 		}
 	}
 }

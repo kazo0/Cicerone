@@ -15,16 +15,23 @@
                    FontSize="Medium"
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
-        <CollectionView ItemsSource="{Binding Beers}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <ContentView>
-                        <Frame Margin="10">
-                            <Label Text="{Binding BeerName}" />
-                        </Frame>
-                    </ContentView>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <RefreshView IsRefreshing="{Binding IsBusy}"
+                     Command="{Binding RefreshCommand}">
+            <CollectionView ItemsSource="{Binding Beers}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedBeer}"
+                            SelectionChangedCommand="{Binding SelectBeerCommand}"
+                            IsVisible="{Binding IsBusy, Converter={StaticResource reverseBoolConverter}}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Frame Margin="10">
+                                <Label Text="{Binding BeerName}" />
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
     </StackLayout>
 </views:MvxContentPage>

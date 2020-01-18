@@ -9,7 +9,7 @@ namespace Cicerone.Core.Models
         public long CheckinCount { get; set; }
 
         [JsonProperty("beer")]
-        public Beer Beer { get; set; }
+        public BeerSummary Beer { get; set; }
 
         [JsonProperty("brewery")]
         public Brewery Brewery { get; set; }

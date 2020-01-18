@@ -7,6 +7,8 @@ namespace Cicerone.Core.Services.Beers
 {
 	public interface IBeerService
 	{
-		Task<List<Beer>> SearchBeer(string searchTerm);
+		Task<List<BeerSummary>> GetBeers(string searchTerm);
+
+		Task<BeerDetail> GetBeerDetails(long beerId);
 	}
 }

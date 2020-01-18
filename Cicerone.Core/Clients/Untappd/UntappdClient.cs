@@ -30,5 +30,14 @@ namespace Cicerone.Core.Clients.Untappd
 			var response = await Get<BaseResponse<BeerSearchResponse>>(request);
 			return response?.Response;
 		}
+
+		public async Task<BeerDetailsResponse> GetBeerDetails(long beerId)
+		{
+			var request = new RestRequest($"/beer/info/{beerId}", Method.GET);
+
+			var response = await Get<BaseResponse<BeerDetailsResponse>>(request);
+
+			return response?.Response;
+		}
 	}
 }
