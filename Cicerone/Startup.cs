@@ -1,8 +1,12 @@
 ﻿using System;
+using Cicerone.Clients.Untappd;
+using Cicerone.Services.Beer;
+using Cicerone.ViewModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RestSharp;
 
 namespace Cicerone
 {
@@ -32,6 +36,9 @@ namespace Cicerone
 		private static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
 		{
 			services.AddTransient<SearchViewModel>();
+			services.AddSingleton<IBeerService, BeerService>();
+			services.AddSingleton<IUntappdClient, UntappdClient>();
+			services.AddSingleton<IRestClient, RestClient>();
 		}
 
 	}

@@ -25,6 +25,9 @@
     <Folder Include="Views\" />
     <Folder Include="Models\" />
     <Folder Include="Clients\" />
+    <Folder Include="Clients\Untappd\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Beers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MainPage.xaml" />

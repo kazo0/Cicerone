@@ -5,9 +5,10 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              Title="Search"
              ios:Page.UseSafeArea="true">
-    <SearchBar Placeholder="Search for a brew"
+    <SearchBar x:Name="searchBar"
+               Placeholder="Search for a brew"
                VerticalOptions="Start"
-               HorizontalTextAlignment="Center"
                FontSize="Medium"
-               FontAttributes="Italic" />
+               SearchCommand="{Binding SearchCommand}"
+               SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
 </ContentPage>
