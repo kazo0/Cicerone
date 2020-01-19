@@ -7,7 +7,8 @@
                       xmlns:viewModels="clr-namespace:Cicerone.Core.ViewModels"
                       Title="Search"
                       x:TypeArguments="viewModels:SearchViewModel"
-                      ios:Page.UseSafeArea="true">
+                      ios:Page.UseSafeArea="true"
+                      BackgroundColor="LightGray">
     <StackLayout>
         <SearchBar x:Name="searchBar"
                    Placeholder="Search for a brew"
@@ -26,7 +27,36 @@
                     <DataTemplate>
                         <ContentView>
                             <Frame Margin="10">
-                                <Label Text="{Binding BeerName}" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*" />
+                                        <RowDefinition Height="1*" />
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.RowSpan="2"
+                                           Source="{Binding BeerLabel}" />
+                                    <Label Grid.Column="1"
+                                           Text="{Binding BeerName}" />
+                                    <StackLayout Grid.Row="1"
+                                                 Grid.Column="1"
+                                                 Orientation="Horizontal">
+                                        <Label Grid.Row="1"
+                                               Grid.Column="1"
+                                               FontSize="Caption"
+                                               TextColor="Gray"
+                                               Text="{Binding BeerAbv, StringFormat='{0}% ABV'}" />
+                                        <Label Grid.Row="1"
+                                               Grid.Column="1"
+                                               FontSize="Caption"
+                                               TextColor="Gray"
+                                               Text="{Binding BeerIbu, StringFormat='{0} IBU'}" />
+
+                                    </StackLayout>
+
+                                </Grid>
                             </Frame>
                         </ContentView>
                     </DataTemplate>
