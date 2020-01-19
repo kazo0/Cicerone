@@ -136,12 +136,42 @@
     <ImageAsset Include="Assets.xcassets\factory.imageset\factory.png" />
     <ImageAsset Include="Assets.xcassets\factory.imageset\factory%402x.png" />
     <ImageAsset Include="Assets.xcassets\factory.imageset\factory%403x.png" />
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\facebook.png" />
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\facebook%402x.png" />
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\facebook%403x.png" />
+    <ImageAsset Include="Assets.xcassets\twitter.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\twitter.imageset\twitter.png" />
+    <ImageAsset Include="Assets.xcassets\twitter.imageset\twitter%402x.png" />
+    <ImageAsset Include="Assets.xcassets\twitter.imageset\twitter%403x.png" />
+    <ImageAsset Include="Assets.xcassets\internet.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\internet.imageset\internet.png" />
+    <ImageAsset Include="Assets.xcassets\internet.imageset\internet%402x.png" />
+    <ImageAsset Include="Assets.xcassets\internet.imageset\internet%403x.png" />
+    <ImageAsset Include="Assets.xcassets\hops.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\beer.png" />
+    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\beer%402x.png" />
+    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\beer%403x.png" />
+    <ImageAsset Include="Assets.xcassets\percent.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\percent.imageset\percentage.png" />
+    <ImageAsset Include="Assets.xcassets\percent.imageset\percentage%402x.png" />
+    <ImageAsset Include="Assets.xcassets\percent.imageset\percentage%403x.png" />
+    <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29.png" />
+    <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29%402x.png" />
+    <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Assets.xcassets\Icon.imageset\" />
     <Folder Include="Assets.xcassets\factory.imageset\" />
     <Folder Include="Assets.xcassets\world.imageset\" />
+    <Folder Include="Assets.xcassets\facebook.imageset\" />
+    <Folder Include="Assets.xcassets\twitter.imageset\" />
+    <Folder Include="Assets.xcassets\internet.imageset\" />
+    <Folder Include="Assets.xcassets\hops.imageset\" />
+    <Folder Include="Assets.xcassets\beerstyle.imageset\" />
+    <Folder Include="Assets.xcassets\percent.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
