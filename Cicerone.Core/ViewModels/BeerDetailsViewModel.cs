@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Cicerone.Core.Models;
 using Cicerone.Core.Services.Beers;
+using MvvmCross.Commands;
 
 namespace Cicerone.Core.ViewModels
 {
@@ -9,6 +11,9 @@ namespace Cicerone.Core.ViewModels
 	{
 		private readonly IBeerService _beerService;
 		private long _beerId;
+
+		private ICommand _refreshCommand;
+		public ICommand RefreshCommand => _refreshCommand ?? (_refreshCommand = new MvxAsyncCommand(FetchBeer));
 
 		private BeerDetail _beer;
 		public BeerDetail Beer
@@ -29,7 +34,14 @@ namespace Cicerone.Core.ViewModels
 
 		public override async Task Initialize()
 		{
+			await FetchBeer();
+		}
+
+		private async Task FetchBeer()
+		{
+			IsBusy = true;
 			Beer = await _beerService.GetBeerDetails(_beerId);
+			IsBusy = false;
 		}
 	}
 }
