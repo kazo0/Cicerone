@@ -28,5 +28,11 @@ namespace Cicerone.Core.Models
 
         [JsonProperty("brewery_active")]
         public long BreweryActive { get; set; }
+
+        [JsonProperty("contact")]
+        public Contact Contact { get; set; }
+
+        [JsonProperty("location")]
+        public Location Location { get; set; }
     }
 }

@@ -6,6 +6,7 @@
                       xmlns:viewModels="clr-namespace:Cicerone.Core.ViewModels"
                       xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
                       xmlns:converters="clr-namespace:Cicerone.Converters"
+                      Title="{Binding Beer.BeerName}"
                       x:TypeArguments="viewModels:BeerDetailsViewModel"
                       ios:Page.UseSafeArea="true">
     <views:MvxContentPage.Resources>
@@ -17,10 +18,52 @@
                  Command="{Binding RefreshCommand}">
         <ScrollView>
             <StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource reverseBoolConverter}}">
-                <Image Source="{Binding Beer, Converter={StaticResource beerToLabelConverter}}"
-                       HorizontalOptions="CenterAndExpand" />
-                <Label Text="{Binding Beer.BeerName}" />
-                <Label Text="{Binding Beer.Brewery.BreweryName}" />
+                <Grid>
+                    <Image Margin="0,10,0,10"
+                           Source="{Binding Beer, Converter={StaticResource beerToLabelConverter}}"
+                           HorizontalOptions="CenterAndExpand" />
+                </Grid>
+                <Frame Margin="0,-10,0,0"
+                       VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="CenterAndExpand">
+                            <Image Source="factory" />
+                            <Label Text="{Binding Beer.Brewery.BreweryName}"
+                                   HorizontalOptions="Center" />
+                        </StackLayout>
+                        <Grid Margin="10,0,10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="Caption"
+                                   TextColor="Gray"
+                                   Text="{Binding Beer.BeerAbv, StringFormat='{0}% ABV'}" />
+                            <Label Grid.Column="1"
+                                   FontSize="Caption"
+                                   HorizontalOptions="Center"
+                                   TextColor="Gray"
+                                   Text="{Binding Beer.BeerIbu, StringFormat='{0} IBU'}" />
+                            <Label Grid.Column="2"
+                                   HorizontalOptions="End"
+                                   FontSize="Caption"
+                                   TextColor="Gray"
+                                   Text="{Binding Beer.BeerStyle}" />
+                        </Grid>
+                        <Label Text="{Binding Beer.BeerDescription}" />
+                        <Button Text="Facebook"
+                                Command="{Binding NavToExternalCommand}"
+                                CommandParameter="{Binding Beer.Brewery.Contact.Facebook}" />
+                        <Button Text="Twitter"
+                                Command="{Binding NavToTwitterCommand}"
+                                CommandParameter="{Binding Beer.Brewery.Contact.Twitter}" />
+                        <Button Text="Website"
+                                Command="{Binding NavToExternalCommand}"
+                                CommandParameter="{Binding Beer.Brewery.Contact.Url}" />
+                    </StackLayout>
+                </Frame>
             </StackLayout>
         </ScrollView>
     </RefreshView>

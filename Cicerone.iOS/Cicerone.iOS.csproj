@@ -127,10 +127,21 @@
     <ImageAsset Include="Assets.xcassets\Icon.imageset\Untitled.png" />
     <ImageAsset Include="Assets.xcassets\Icon.imageset\Untitled%402x.png" />
     <ImageAsset Include="Assets.xcassets\Icon.imageset\Untitled%403x.png" />
+    <ImageAsset Include="Assets.xcassets\factory.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\world.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\world.imageset\world.pdf" />
+    <ImageAsset Include="Assets.xcassets\world.imageset\world.png" />
+    <ImageAsset Include="Assets.xcassets\world.imageset\world%402x.png" />
+    <ImageAsset Include="Assets.xcassets\world.imageset\world%403x.png" />
+    <ImageAsset Include="Assets.xcassets\factory.imageset\factory.png" />
+    <ImageAsset Include="Assets.xcassets\factory.imageset\factory%402x.png" />
+    <ImageAsset Include="Assets.xcassets\factory.imageset\factory%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Assets.xcassets\Icon.imageset\" />
+    <Folder Include="Assets.xcassets\factory.imageset\" />
+    <Folder Include="Assets.xcassets\world.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
