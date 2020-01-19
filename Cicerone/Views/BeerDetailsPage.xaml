@@ -5,12 +5,20 @@
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Cicerone.Core.ViewModels"
                       xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                      xmlns:converters="clr-namespace:Cicerone.Converters"
                       x:TypeArguments="viewModels:BeerDetailsViewModel"
                       ios:Page.UseSafeArea="true">
+    <views:MvxContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BeerToLabelConverter x:Key="beerToLabelConverter" />
+        </ResourceDictionary>
+    </views:MvxContentPage.Resources>
     <RefreshView IsRefreshing="{Binding IsBusy}"
                  Command="{Binding RefreshCommand}">
         <ScrollView>
             <StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource reverseBoolConverter}}">
+                <Image Source="{Binding Beer, Converter={StaticResource beerToLabelConverter}}"
+                       HorizontalOptions="CenterAndExpand" />
                 <Label Text="{Binding Beer.BeerName}" />
                 <Label Text="{Binding Beer.Brewery.BreweryName}" />
             </StackLayout>

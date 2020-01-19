@@ -12,10 +12,10 @@ namespace Cicerone.Core.Models
         public string BeerName { get; set; }
 
         [JsonProperty("beer_label")]
-        public Uri BeerLabel { get; set; }
+        public string BeerLabel { get; set; }
 
         [JsonProperty("beer_label_hd")]
-        public Uri BeerLabelHd { get; set; }
+        public string BeerLabelHd { get; set; }
 
         [JsonProperty("beer_abv")]
         public double BeerAbv { get; set; }
