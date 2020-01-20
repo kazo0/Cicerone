@@ -12,6 +12,7 @@ namespace Cicerone.Views
 		{
 			
 			InitializeComponent();
+			
 		}
 	}
 }
