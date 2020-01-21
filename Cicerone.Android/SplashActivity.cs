@@ -5,12 +5,27 @@ using Android.Content;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Util;
+using MvvmCross.Forms.Platforms.Android.Core;
+using MvvmCross.Forms.Platforms.Android.Views;
+using MvvmCross.Platforms.Android.Views;
 
 namespace Cicerone.Droid
 {
     [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
-    public class SplashActivity : AppCompatActivity
+    public class SplashActivity : MvxFormsSplashScreenAppCompatActivity<MvxFormsAndroidSetup<Core.App, App>, Core.App, App>
     {
+        public SplashActivity()
+			: base(Resource.Layout.SplashScreen)
+        {
+        }
+
+		protected override Task RunAppStartAsync(Bundle bundle)
+		{
+            StartActivity(typeof(RootActivity));
+            return base.RunAppStartAsync(bundle);
+		}
+
+        /*
         static readonly string TAG = "X:" + typeof(SplashActivity).Name;
 
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
@@ -34,8 +49,7 @@ namespace Cicerone.Droid
         {
 			//Startup work here
             StartActivity(new Intent(Application.Context, typeof(RootActivity)));
-        }
-
+        }*/
 
     }
 }
