@@ -8,15 +8,21 @@ using MvvmCross.Commands;
 using System.Collections.Generic;
 using Cicerone.Core.Models;
 using MvvmCross.Navigation;
+using System.Linq;
 
 namespace Cicerone.Core.ViewModels
 {
 	public class SearchViewModel : BaseViewModel
 	{
+		private const int PageSize = 25;
+
 		private readonly IBeerService _beerService;
 		private readonly IMvxNavigationService _navigationService;
 
 		private string _currentQuery;
+		private int _page;
+		private int _resultSize;
+		private BeerSearchResponse _searchResponse;
 
 		private ICommand _searchCommand;
 		public ICommand SearchCommand =>
@@ -29,6 +35,10 @@ namespace Cicerone.Core.ViewModels
 		private ICommand _selectBeerCommand;
 		public ICommand SelectBeerCommand =>
 			_selectBeerCommand ?? (_selectBeerCommand = new MvxAsyncCommand(NavigateToBeerDetails));
+
+		private ICommand _thresholdReachedCommand;
+		public ICommand ThresholdReachedCommand =>
+			_thresholdReachedCommand ?? (_thresholdReachedCommand = new MvxAsyncCommand(LoadNextPage));
 
 		private ObservableCollection<BeerSummary> _beers;
 		public ObservableCollection<BeerSummary> Beers
@@ -44,23 +54,40 @@ namespace Cicerone.Core.ViewModels
 			set => SetProperty(ref _selectedBeer, value);
 		}
 
+		private int _itemThreshold;
+		public int ItemTreshold
+		{
+			get { return _itemThreshold; }
+			set { SetProperty(ref _itemThreshold, value); }
+		}
+
 		public SearchViewModel(IBeerService beerService, IMvxNavigationService navigationService)
 		{
 			_beerService = beerService;
 			_navigationService = navigationService;
+
+			_itemThreshold = 5;
 		}
 
 		private async Task Search(string query)
 		{
-			if (string.IsNullOrWhiteSpace(query))
+			if (IsBusy || string.IsNullOrWhiteSpace(query))
 			{
 				return;
 			}
 
 			IsBusy = true;
-
+			_page = 0;
+			_resultSize = 0;
+			ItemTreshold = 0;
 			_currentQuery = query;
-			var beers = await _beerService.GetBeers(query);
+			_searchResponse = await _beerService.GetBeers(query);
+			_resultSize = _searchResponse?.Found ?? 0;
+
+			var beers = _searchResponse?.Beers
+				?.BeerItems
+				?.Select(x => x.Beer) ?? Enumerable.Empty<BeerSummary>();
+
 			Beers = new ObservableCollection<BeerSummary>(beers);
 
 			IsBusy = false;
@@ -74,6 +101,34 @@ namespace Cicerone.Core.ViewModels
 		private async Task NavigateToBeerDetails()
 		{
 			await _navigationService.Navigate<BeerDetailsViewModel, long>(SelectedBeer.Bid);
+		}
+
+		private async Task LoadNextPage()
+		{
+			if (IsBusy)
+			{
+				return;
+			}
+
+			IsBusy = true;
+
+			var beerSearchResponse = await _beerService.GetBeers(_currentQuery, ++_page);
+
+			if (beerSearchResponse.Offset < _page)
+			{
+				ItemTreshold = -1;
+			}
+
+			var beers = beerSearchResponse?.Beers
+				?.BeerItems
+				?.Select(x => x.Beer) ?? Enumerable.Empty<BeerSummary>();
+
+			foreach (var beer in beers)
+			{
+				Beers.Add(beer);
+			}
+
+			IsBusy = false;
 		}
 	}
 }

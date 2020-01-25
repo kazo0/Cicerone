@@ -22,10 +22,11 @@ namespace Cicerone.Core.Clients.Untappd
 			Client.UserAgent = $"Cicerone {DeviceInfo.Platform} ({Constants.ClientId})";
 		}
 
-		public async Task<BeerSearchResponse> SearchBeer(string term)
+		public async Task<BeerSearchResponse> SearchBeer(string term, int offset = 0)
 		{
 			var request = new RestRequest("/search/beer", Method.GET);
 			request.AddQueryParameter("q", term, encode: true);
+			request.AddQueryParameter("offset", offset.ToString(), encode: true);
 
 			var response = await Get<BaseResponse<BeerSearchResponse>>(request);
 			return response?.Response;

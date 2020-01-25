@@ -24,13 +24,13 @@ namespace Cicerone.Core.Models
         public long SearchVersion { get; set; }
 
         [JsonProperty("found")]
-        public long Found { get; set; }
+        public int Found { get; set; }
 
         [JsonProperty("offset")]
-        public long Offset { get; set; }
+        public int Offset { get; set; }
 
         [JsonProperty("limit")]
-        public long Limit { get; set; }
+        public int Limit { get; set; }
 
         [JsonProperty("term")]
         public string Term { get; set; }
