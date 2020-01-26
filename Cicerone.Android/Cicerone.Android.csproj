@@ -40,9 +40,9 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidLinkTool>proguard</AndroidLinkTool>
+    <AndroidPackageFormat>aab</AndroidPackageFormat>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
