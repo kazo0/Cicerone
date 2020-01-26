@@ -35,7 +35,7 @@
                                    HorizontalOptions="Center"
                                    VerticalOptions="End" />
                         </StackLayout>
-                        <Grid Margin="10">
+                        <Grid Margin="10,20,10,10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="1*" />
@@ -86,6 +86,7 @@
                                          HeightRequest="30"
                                          HorizontalOptions="Center"
                                          Command="{Binding NavToExternalCommand}"
+                                         BackgroundColor="Transparent"
                                          CommandParameter="{Binding Beer.Brewery.Contact.Facebook}" />
                             <ImageButton Grid.Column="1"
                                          WidthRequest="30"
@@ -93,12 +94,14 @@
                                          HorizontalOptions="Center"
                                          Source="twitter"
                                          Command="{Binding NavToTwitterCommand}"
+                                         BackgroundColor="Transparent"
                                          CommandParameter="{Binding Beer.Brewery.Contact.Twitter}" />
                             <ImageButton Grid.Column="2"
                                          WidthRequest="30"
                                          HeightRequest="30"
                                          HorizontalOptions="Center"
                                          Source="internet"
+                                         BackgroundColor="Transparent"
                                          Command="{Binding NavToExternalCommand}"
                                          CommandParameter="{Binding Beer.Brewery.Contact.Url}" />
                         </Grid>
