@@ -10,9 +10,7 @@ namespace Cicerone.Views
 	{
 		public SearchPage()
 		{
-			
 			InitializeComponent();
-			
 		}
 	}
 }

@@ -21,12 +21,11 @@ namespace Cicerone.Core.ViewModels
 
 		private string _currentQuery;
 		private int _page;
-		private int _resultSize;
 		private BeerSearchResponse _searchResponse;
 
 		private ICommand _searchCommand;
 		public ICommand SearchCommand =>
-			_searchCommand ?? (_searchCommand = new MvxAsyncCommand<string>(Search));
+			_searchCommand ?? (_searchCommand = new MvxAsyncCommand<string>(Search, _ => true, true));
 
 		private ICommand _refreshCommand;
 		public ICommand RefreshCommand =>
@@ -34,7 +33,7 @@ namespace Cicerone.Core.ViewModels
 
 		private ICommand _selectBeerCommand;
 		public ICommand SelectBeerCommand =>
-			_selectBeerCommand ?? (_selectBeerCommand = new MvxAsyncCommand(NavigateToBeerDetails));
+			_selectBeerCommand ?? (_selectBeerCommand = new MvxAsyncCommand<BeerSummary>(NavigateToBeerDetails));
 
 		private ICommand _thresholdReachedCommand;
 		public ICommand ThresholdReachedCommand =>
@@ -71,18 +70,16 @@ namespace Cicerone.Core.ViewModels
 
 		private async Task Search(string query)
 		{
-			if (IsBusy || string.IsNullOrWhiteSpace(query))
+			if (IsBusy)
 			{
 				return;
 			}
 
 			IsBusy = true;
 			_page = 0;
-			_resultSize = 0;
 			ItemTreshold = 0;
 			_currentQuery = query;
 			_searchResponse = await _beerService.GetBeers(query);
-			_resultSize = _searchResponse?.Found ?? 0;
 
 			var beers = _searchResponse?.Beers
 				?.BeerItems
@@ -98,9 +95,9 @@ namespace Cicerone.Core.ViewModels
 			await Search(_currentQuery);
 		}
 
-		private async Task NavigateToBeerDetails()
+		private async Task NavigateToBeerDetails(BeerSummary beer)
 		{
-			await _navigationService.Navigate<BeerDetailsViewModel, long>(SelectedBeer.Bid);
+			await _navigationService.Navigate<BeerDetailsViewModel, long>(beer.Bid);
 		}
 
 		private async Task LoadNextPage()
