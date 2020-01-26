@@ -105,30 +105,24 @@ namespace Cicerone.Core.ViewModels
 
 		private async Task LoadNextPage()
 		{
-			if (IsBusy)
-			{
-				return;
-			}
 
-			IsBusy = true;
+			var offset = ++_page * PageSize;
+			var beerSearchResponse = await _beerService.GetBeers(_currentQuery, offset);
 
-			var beerSearchResponse = await _beerService.GetBeers(_currentQuery, ++_page);
-
-			if (beerSearchResponse.Offset < _page)
-			{
-				ItemTreshold = -1;
-			}
 
 			var beers = beerSearchResponse?.Beers
 				?.BeerItems
 				?.Select(x => x.Beer) ?? Enumerable.Empty<BeerSummary>();
 
+			if (!beers.Any())
+			{
+				ItemTreshold = -1;
+			}
+
 			foreach (var beer in beers)
 			{
 				Beers.Add(beer);
 			}
-
-			IsBusy = false;
 		}
 	}
 }

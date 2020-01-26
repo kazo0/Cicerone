@@ -23,11 +23,12 @@ namespace Cicerone.Core.Clients
 
 		protected async Task<T> Get<T>(RestRequest request) where T : class
 		{
-			var response = await Client.ExecuteGetAsync<T>(request);
+			var response = await Client.ExecuteGetAsync(request);
 
 			if (response.StatusCode != HttpStatusCode.OK)
 			{
-				throw new HttpRequestException(response.ErrorMessage);
+				Console.WriteLine($"HTTP Error: {response.StatusDescription}");
+				return default;
 			}
 
 			try
