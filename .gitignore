@@ -404,3 +404,4 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 Cicerone/Clients/Untappd/Constants.cs
+Cicerone.Core/Clients/Untappd/UntappdConstants.cs

@@ -9,17 +9,17 @@ namespace Cicerone.Core.Clients.Untappd
 {
 	public class UntappdClient : BaseApiClient, IUntappdClient
 	{
-		protected override string BaseUrl => Constants.BaseUrl;
+		protected override string BaseUrl => UntappdConstants.BaseUrl;
 
 		public UntappdClient(IRestClient client) : base(client)
 		{
 			Client.Authenticator = new SimpleAuthenticator(
 				"client_id",
-				Constants.ClientId,
+				UntappdConstants.ClientId,
 				"client_secret",
-				Constants.ClientSecret);
+				UntappdConstants.ClientSecret);
 
-			Client.UserAgent = $"Cicerone {DeviceInfo.Platform} ({Constants.ClientId})";
+			Client.UserAgent = $"Cicerone {DeviceInfo.Platform} ({UntappdConstants.ClientId})";
 		}
 
 		public async Task<BeerSearchResponse> SearchBeer(string term, int offset = 0)
