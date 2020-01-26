@@ -160,6 +160,10 @@
     <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29.png" />
     <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29%402x.png" />
     <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29%403x.png" />
+    <ImageAsset Include="Assets.xcassets\pbu.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\pbu.imageset\pbu.png" />
+    <ImageAsset Include="Assets.xcassets\pbu.imageset\pbu%402x.png" />
+    <ImageAsset Include="Assets.xcassets\pbu.imageset\pbu%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -172,6 +176,7 @@
     <Folder Include="Assets.xcassets\hops.imageset\" />
     <Folder Include="Assets.xcassets\beerstyle.imageset\" />
     <Folder Include="Assets.xcassets\percent.imageset\" />
+    <Folder Include="Assets.xcassets\pbu.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />

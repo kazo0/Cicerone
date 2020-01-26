@@ -14868,25 +14868,28 @@ namespace Cicerone.Droid
 			public const int notify_panel_notification_icon_bg = 2131165502;
 			
 			// aapt resource value: 0x7F07013F
-			public const int percent = 2131165503;
+			public const int pbu = 2131165503;
 			
 			// aapt resource value: 0x7F070140
-			public const int splash_logo = 2131165504;
+			public const int percent = 2131165504;
 			
 			// aapt resource value: 0x7F070141
-			public const int splash_screen = 2131165505;
+			public const int splash_logo = 2131165505;
 			
 			// aapt resource value: 0x7F070142
-			public const int tooltip_frame_dark = 2131165506;
+			public const int splash_screen = 2131165506;
 			
 			// aapt resource value: 0x7F070143
-			public const int tooltip_frame_light = 2131165507;
+			public const int tooltip_frame_dark = 2131165507;
 			
 			// aapt resource value: 0x7F070144
-			public const int twitter = 2131165508;
+			public const int tooltip_frame_light = 2131165508;
 			
 			// aapt resource value: 0x7F070145
-			public const int world = 2131165509;
+			public const int twitter = 2131165509;
+			
+			// aapt resource value: 0x7F070146
+			public const int world = 2131165510;
 			
 			static Drawable()
 			{
