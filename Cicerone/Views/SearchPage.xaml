@@ -7,7 +7,7 @@
 			 Title="Search"
 			 Visual="Material"
 			 ios:Page.UseSafeArea="true">
-	<StackLayout>
+	<Grid RowDefinitions="Auto, *">
 		<SearchBar x:Name="searchBar"
 				   Placeholder="Search for a brew"
 				   VerticalOptions="Start"
@@ -17,10 +17,19 @@
 				   SearchCommand="{Binding SearchCommand}"
 				   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
 		<CollectionView ItemsSource="{Binding Beers}"
+						Grid.Row="1"
 						SelectionMode="None"
 						RemainingItemsThreshold="{Binding ItemTreshold}"
 						RemainingItemsThresholdReachedCommand="{Binding ThresholdReachedCommand}"
-						ItemsUpdatingScrollMode="KeepScrollOffset">
+						ItemsUpdatingScrollMode="KeepScrollOffset"
+						IsVisible="{Binding IsBusy, Converter={StaticResource reverseBoolConverter}}">
+			<CollectionView.EmptyView>
+				<Grid>
+					<Label Text="No beers to display"
+						   HorizontalOptions="CenterAndExpand"
+						   VerticalOptions="CenterAndExpand"/>
+				</Grid>
+			</CollectionView.EmptyView>
 			<CollectionView.ItemTemplate>
 				<DataTemplate>
 					<ContentView>
@@ -64,5 +73,10 @@
 				</DataTemplate>
 			</CollectionView.ItemTemplate>
 		</CollectionView>
-	</StackLayout>
+		<ActivityIndicator Grid.Row="1"
+						   VerticalOptions="Center"
+						   HorizontalOptions="Center"
+						   IsVisible="{Binding IsBusy}"
+						   IsRunning="{Binding IsBusy}"/>
+	</Grid>
 </ContentPage>

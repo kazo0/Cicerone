@@ -45,6 +45,11 @@
 							Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
 				</Style>
 
+				<Style TargetType="ActivityIndicator">
+					<Setter Property="Color"
+							Value="{StaticResource PrimaryColor}" />
+				</Style>
+
 				<converters:ReverseBoolConverter x:Key="reverseBoolConverter" />
 			</ResourceDictionary>
 		</ResourceDictionary>
