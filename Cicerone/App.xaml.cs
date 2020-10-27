@@ -10,6 +10,8 @@ namespace Cicerone
 		public App()
 		{
 			InitializeComponent();
+			Startup.Init();
+			MainPage = new NavigationPage(Startup.ServiceProvider.GetService<SearchPage>());
 		}
 	}
 }

@@ -3,12 +3,12 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Threading.Tasks;
 using Cicerone.Core.Services.Beers;
-using MvvmCross.ViewModels;
-using MvvmCross.Commands;
 using System.Collections.Generic;
 using Cicerone.Core.Models;
-using MvvmCross.Navigation;
 using System.Linq;
+using MvvmHelpers.Commands;
+using Xamarin.Forms;
+using System.Net.Http;
 
 namespace Cicerone.Core.ViewModels
 {
@@ -17,55 +17,25 @@ namespace Cicerone.Core.ViewModels
 		private const int PageSize = 25;
 
 		private readonly IBeerService _beerService;
-		private readonly IMvxNavigationService _navigationService;
 
 		private string _currentQuery;
 		private int _page;
 		private BeerSearchResponse _searchResponse;
 
-		private ICommand _searchCommand;
-		public ICommand SearchCommand =>
-			_searchCommand ?? (_searchCommand = new MvxAsyncCommand<string>(Search, _ => true, true));
+		public ICommand SearchCommand => new AsyncCommand<string>(Search);
+		public ICommand RefreshCommand => new AsyncCommand(Refresh);
+		public ICommand SelectBeerCommand => new MvvmHelpers.Commands.Command<BeerSummary>(NavigateToBeerDetails);
+		public ICommand ThresholdReachedCommand =>  new AsyncCommand(LoadNextPage);
 
-		private ICommand _refreshCommand;
-		public ICommand RefreshCommand =>
-			_refreshCommand ?? (_refreshCommand = new MvxAsyncCommand(Refresh));
+		public ObservableCollection<BeerSummary> Beers { get; set; }
+		public BeerSummary SelectedBeer { get; set; }
+		public int ItemTreshold { get; set; }
 
-		private ICommand _selectBeerCommand;
-		public ICommand SelectBeerCommand =>
-			_selectBeerCommand ?? (_selectBeerCommand = new MvxAsyncCommand<BeerSummary>(NavigateToBeerDetails));
-
-		private ICommand _thresholdReachedCommand;
-		public ICommand ThresholdReachedCommand =>
-			_thresholdReachedCommand ?? (_thresholdReachedCommand = new MvxAsyncCommand(LoadNextPage));
-
-		private ObservableCollection<BeerSummary> _beers;
-		public ObservableCollection<BeerSummary> Beers
-		{
-			get => _beers;
-			set => SetProperty(ref _beers, value);
-		}
-
-		private BeerSummary _selectedBeer;
-		public BeerSummary SelectedBeer
-		{
-			get => _selectedBeer;
-			set => SetProperty(ref _selectedBeer, value);
-		}
-
-		private int _itemThreshold;
-		public int ItemTreshold
-		{
-			get { return _itemThreshold; }
-			set { SetProperty(ref _itemThreshold, value); }
-		}
-
-		public SearchViewModel(IBeerService beerService, IMvxNavigationService navigationService)
+		public SearchViewModel(IBeerService beerService)
 		{
 			_beerService = beerService;
-			_navigationService = navigationService;
 
-			_itemThreshold = 5;
+			ItemTreshold = 5;
 		}
 
 		private async Task Search(string query)
@@ -95,9 +65,9 @@ namespace Cicerone.Core.ViewModels
 			await Search(_currentQuery);
 		}
 
-		private async Task NavigateToBeerDetails(BeerSummary beer)
+		private void NavigateToBeerDetails(BeerSummary beer)
 		{
-			await _navigationService.Navigate<BeerDetailsViewModel, long>(beer.Bid);
+			MessagingCenter.Send<SearchViewModel, long>(this, "Navigate", beer.Bid);
 		}
 
 		private async Task LoadNextPage()
@@ -120,6 +90,10 @@ namespace Cicerone.Core.ViewModels
 			{
 				Beers.Add(beer);
 			}
+		}
+
+		public override async Task Initialize()
+		{
 		}
 	}
 }

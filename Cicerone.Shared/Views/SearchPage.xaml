@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cicerone.Shared.Views.SearchPage"
+			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+			 xmlns:viewModels="clr-namespace:Cicerone.Core.ViewModels;assembly=Cicerone.Core"
+			 Title="Search"
+			 x:TypeArguments="viewModels:SearchViewModel"
+			 Visual="Material"
+			 ios:Page.UseSafeArea="true">
+	<StackLayout>
+		<SearchBar x:Name="searchBar"
+				   Placeholder="Search for a brew"
+				   VerticalOptions="Start"
+				   FontSize="Medium"
+				   IsEnabled="True"
+				   IsSpellCheckEnabled="False"
+				   SearchCommand="{Binding SearchCommand}"
+				   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
+		<CollectionView ItemsSource="{Binding Beers}"
+						SelectionMode="None"
+						RemainingItemsThreshold="{Binding ItemTreshold}"
+						RemainingItemsThresholdReachedCommand="{Binding ThresholdReachedCommand}"
+						ItemsUpdatingScrollMode="KeepScrollOffset">
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<ContentView>
+						<Frame Margin="10">
+							<Frame.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SearchViewModel}}, Path=SelectBeerCommand}"
+													  CommandParameter="{Binding}" />
+							</Frame.GestureRecognizers>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="1*" />
+									<ColumnDefinition Width="4*" />
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="1*" />
+									<RowDefinition Height="1*" />
+								</Grid.RowDefinitions>
+								<Image Grid.RowSpan="2"
+									   Source="{Binding BeerLabel}" />
+								<Label Grid.Column="1"
+									   Text="{Binding BeerName}" />
+								<StackLayout Grid.Row="1"
+											 Grid.Column="1"
+											 Orientation="Horizontal">
+									<Label Grid.Row="1"
+										   Grid.Column="1"
+										   FontSize="Caption"
+										   TextColor="Gray"
+										   Text="{Binding BeerAbv, StringFormat='{0}% ABV'}" />
+									<Label Grid.Row="1"
+										   Grid.Column="1"
+										   FontSize="Caption"
+										   TextColor="Gray"
+										   Text="{Binding BeerIbu, StringFormat='{0} IBU'}" />
+
+								</StackLayout>
+
+							</Grid>
+						</Frame>
+					</ContentView>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+	</StackLayout>
+</ContentPage>

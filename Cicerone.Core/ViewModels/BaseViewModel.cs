@@ -1,20 +1,16 @@
 ﻿using System;
-using MvvmCross.ViewModels;
+using System.ComponentModel;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Cicerone.Core.ViewModels
 {
-	public abstract class BaseViewModel : MvxViewModel
+	public abstract class BaseViewModel : INotifyPropertyChanged
 	{
-		private bool _isBusy;
-		public bool IsBusy
-		{
-			get => _isBusy;
-			set => SetProperty(ref _isBusy, value);
-		}
-	}
+		public bool IsBusy { get; set; }
 
-	public abstract class BaseViewModel<T> : BaseViewModel, IMvxViewModel<T>
-	{
-		public abstract void Prepare(T parameter);
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		public abstract Task Initialize();
 	}
 }

@@ -1,16 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application x:Class="Cicerone.App"
-             xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:converters="clr-namespace:Cicerone.Converters"
-             mc:Ignorable="d">
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary>
-                <converters:ReverseBoolConverter x:Key="reverseBoolConverter" />
-            </ResourceDictionary>
-        </ResourceDictionary>
-    </Application.Resources>
+			 xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:converters="clr-namespace:Cicerone.Converters"
+			 mc:Ignorable="d">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary>
+				<Color x:Key="BackgroundColorDark">#121212</Color>
+				<Color x:Key="BackgroundColorLight">#EFF2F5</Color>
+
+				<Color x:Key="TextPrimaryColorDark">#FFFFFF</Color>
+				<Color x:Key="TextPrimaryColorLight">#323130</Color>
+
+				<Color x:Key="PrimaryColor">#f3bf41</Color>
+
+				<Style TargetType="Page"
+					   ApplyToDerivedTypes="True">
+					<Setter Property="BackgroundColor"
+							Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+				</Style>
+
+				<Style TargetType="NavigationPage">
+					<Setter Property="BarBackgroundColor"
+							Value="{StaticResource PrimaryColor}" />
+				</Style>
+
+				<Style TargetType="Frame"
+					   ApplyToDerivedTypes="True">
+					<Setter Property="BackgroundColor"
+							Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+				</Style>
+
+				<Style TargetType="SearchBar"
+					   ApplyToDerivedTypes="True">
+					<Setter Property="BackgroundColor"
+							Value="{StaticResource PrimaryColor}" />
+				</Style>
+
+				<Style TargetType="Label">
+					<Setter Property="TextColor"
+							Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
+				</Style>
+
+				<converters:ReverseBoolConverter x:Key="reverseBoolConverter" />
+			</ResourceDictionary>
+		</ResourceDictionary>
+	</Application.Resources>
 </Application>

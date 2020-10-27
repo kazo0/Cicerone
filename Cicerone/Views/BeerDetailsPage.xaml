@@ -1,118 +1,114 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<views:MvxContentPage x:Class="Cicerone.Views.BeerDetailsPage"
-                      xmlns="http://xamarin.com/schemas/2014/forms"
-                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-                      xmlns:viewModels="clr-namespace:Cicerone.Core.ViewModels"
-                      xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-                      xmlns:converters="clr-namespace:Cicerone.Converters"
-                      Title="{Binding Beer.BeerName}"
-                      x:TypeArguments="viewModels:BeerDetailsViewModel"
-                      ios:Page.UseSafeArea="true">
-    <views:MvxContentPage.Resources>
-        <ResourceDictionary>
-            <converters:BeerToLabelConverter x:Key="beerToLabelConverter" />
-        </ResourceDictionary>
-    </views:MvxContentPage.Resources>
-    <RefreshView IsRefreshing="{Binding IsBusy}"
-                 Command="{Binding RefreshCommand}">
-        <ScrollView>
-            <StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource reverseBoolConverter}}">
-                <Grid>
-                    <Image Margin="0,10,0,10"
-                           Source="{Binding Beer, Converter={StaticResource beerToLabelConverter}}"
-                           HorizontalOptions="CenterAndExpand" />
-                </Grid>
-                <Frame Margin="0,-10,0,0"
-                       VerticalOptions="FillAndExpand">
-                    <StackLayout>
-                        <StackLayout Orientation="Horizontal"
-                                     HorizontalOptions="CenterAndExpand">
-                            <Image Source="factory"
-                                   HeightRequest="30"
-                                   WidthRequest="30" />
-                            <Label Text="{Binding Beer.Brewery.BreweryName}"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="End" />
-                        </StackLayout>
-                        <Grid Margin="10,20,10,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            <StackLayout>
-                                <Image Source="percent"
-                                       HeightRequest="20"
-                                       WidthRequest="20" />
-                                <Label FontSize="Caption"
-                                       TextColor="Gray"
-                                       HorizontalOptions="Center"
-                                       Text="{Binding Beer.BeerAbv, StringFormat='{0}% ABV'}" />
-                            </StackLayout>
-                            <StackLayout Grid.Column="1">
-                                <Image Source="beerstyle"
-                                       HeightRequest="20"
-                                       WidthRequest="20" />
-                                <Label FontSize="Caption"
-                                       TextColor="Gray"
-                                       HorizontalOptions="Center"
-                                       Text="{Binding Beer.BeerStyle}" />
-                            </StackLayout>
-                            <StackLayout Grid.Column="2">
-                                <Image Source="hops"
-                                       HeightRequest="20"
-                                       WidthRequest="20" />
-                                <Label FontSize="Caption"
-                                       TextColor="Gray"
-                                       HorizontalOptions="Center"
-                                       Text="{Binding Beer.BeerIbu, StringFormat='{0} IBU'}" />
-                            </StackLayout>
+<ContentPage x:Class="Cicerone.Views.BeerDetailsPage"
+			 xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:viewModels="clr-namespace:Cicerone.Core.ViewModels;assembly=Cicerone.Core"
+			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+			 xmlns:converters="clr-namespace:Cicerone.Converters"
+			 Title="{Binding Beer.BeerName}"
+			 Visual="Material"
+			 ios:Page.UseSafeArea="true">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:BeerToLabelConverter x:Key="beerToLabelConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<RefreshView IsRefreshing="{Binding IsBusy}"
+				 Command="{Binding RefreshCommand}">
+		<ScrollView>
+			<StackLayout IsVisible="{Binding IsBusy, Converter={StaticResource reverseBoolConverter}}">
+				<Grid>
+					<Image Margin="0,10,0,10"
+						   Source="{Binding Beer, Converter={StaticResource beerToLabelConverter}}"
+						   HorizontalOptions="CenterAndExpand" />
+				</Grid>
+				<Frame Margin="0,-10,0,0"
+					   VerticalOptions="FillAndExpand">
+					<StackLayout>
+						<StackLayout Orientation="Horizontal"
+									 HorizontalOptions="CenterAndExpand">
+							<Image Source="{AppThemeBinding Light=factory, Dark=factory_dark}"
+								   HeightRequest="30"
+								   WidthRequest="30" />
+							<Label Text="{Binding Beer.Brewery.BreweryName}"
+								   HorizontalOptions="Center"
+								   VerticalOptions="End" />
+						</StackLayout>
+						<Grid Margin="10,20,10,10">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="1*" />
+								<ColumnDefinition Width="1*" />
+								<ColumnDefinition Width="1*" />
+							</Grid.ColumnDefinitions>
+							<StackLayout>
+								<Image Source="{AppThemeBinding Light=percent, Dark=percent_dark}"
+									   HeightRequest="20"
+									   WidthRequest="20" />
+								<Label FontSize="Caption"
+									   HorizontalOptions="Center"
+									   Text="{Binding Beer.BeerAbv, StringFormat='{0}% ABV'}" />
+							</StackLayout>
+							<StackLayout Grid.Column="1">
+								<Image Source="{AppThemeBinding Light=beerstyle, Dark=beerstyle_dark}"
+									   HeightRequest="20"
+									   WidthRequest="20" />
+								<Label FontSize="Caption"
+									   HorizontalOptions="Center"
+									   Text="{Binding Beer.BeerStyle}" />
+							</StackLayout>
+							<StackLayout Grid.Column="2">
+								<Image Source="{AppThemeBinding Light=hops, Dark=hops_dark}"
+									   HeightRequest="20"
+									   WidthRequest="20" />
+								<Label FontSize="Caption"
+									   HorizontalOptions="Center"
+									   Text="{Binding Beer.BeerIbu, StringFormat='{0} IBU'}" />
+							</StackLayout>
 
 
-                        </Grid>
-                        <Label Margin="0,0,0,10"
-                               Text="{Binding Beer.BeerDescription}" />
-                        <BoxView HeightRequest="1"
-                                 Color="LightGray" />
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            <ImageButton Source="facebook"
-                                         WidthRequest="30"
-                                         HeightRequest="30"
-                                         HorizontalOptions="Center"
-                                         Command="{Binding NavToExternalCommand}"
-                                         BackgroundColor="Transparent"
-                                         CommandParameter="{Binding Beer.Brewery.Contact.Facebook}" />
-                            <ImageButton Grid.Column="1"
-                                         WidthRequest="30"
-                                         HeightRequest="30"
-                                         HorizontalOptions="Center"
-                                         Source="twitter"
-                                         Command="{Binding NavToTwitterCommand}"
-                                         BackgroundColor="Transparent"
-                                         CommandParameter="{Binding Beer.Brewery.Contact.Twitter}" />
-                            <ImageButton Grid.Column="2"
-                                         WidthRequest="30"
-                                         HeightRequest="30"
-                                         HorizontalOptions="Center"
-                                         Source="internet"
-                                         BackgroundColor="Transparent"
-                                         Command="{Binding NavToExternalCommand}"
-                                         CommandParameter="{Binding Beer.Brewery.Contact.Url}" />
-                        </Grid>
-                        <BoxView HeightRequest="1"
-                                 Color="LightGray" />
-                    </StackLayout>
-                </Frame>
-                <Image Margin="0,0,0,10"
-                       Source="pbu_grey"
-                       VerticalOptions="End" />
-            </StackLayout>
-        </ScrollView>
-    </RefreshView>
-</views:MvxContentPage>
+						</Grid>
+						<Label Margin="0,0,0,10"
+							   Text="{Binding Beer.BeerDescription}" />
+						<BoxView HeightRequest="1"
+								 Color="LightGray" />
+						<Grid Margin="10">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="1*" />
+								<ColumnDefinition Width="1*" />
+								<ColumnDefinition Width="1*" />
+							</Grid.ColumnDefinitions>
+							<ImageButton Source="{AppThemeBinding Light=facebook, Dark=facebook_dark}"
+										 WidthRequest="30"
+										 HeightRequest="30"
+										 HorizontalOptions="Center"
+										 Command="{Binding NavToExternalCommand}"
+										 BackgroundColor="Transparent"
+										 CommandParameter="{Binding Beer.Brewery.Contact.Facebook}" />
+							<ImageButton Grid.Column="1"
+										 WidthRequest="30"
+										 HeightRequest="30"
+										 HorizontalOptions="Center"
+										 Source="{AppThemeBinding Light=twitter, Dark=twitter_dark}"
+										 Command="{Binding NavToTwitterCommand}"
+										 BackgroundColor="Transparent"
+										 CommandParameter="{Binding Beer.Brewery.Contact.Twitter}" />
+							<ImageButton Grid.Column="2"
+										 WidthRequest="30"
+										 HeightRequest="30"
+										 HorizontalOptions="Center"
+										 Source="{AppThemeBinding Light=internet, Dark=internet_dark}"
+										 BackgroundColor="Transparent"
+										 Command="{Binding NavToExternalCommand}"
+										 CommandParameter="{Binding Beer.Brewery.Contact.Url}" />
+						</Grid>
+						<BoxView HeightRequest="1"
+								 Color="LightGray" />
+					</StackLayout>
+				</Frame>
+				<Image Margin="0,0,0,10"
+					   Source="pbu_grey"
+					   VerticalOptions="End" />
+			</StackLayout>
+		</ScrollView>
+	</RefreshView>
+</ContentPage>

@@ -33,7 +33,7 @@
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignProvision>Cicerone</CodesignProvision>
@@ -62,6 +62,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -79,11 +80,8 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991537" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
-    <PackageReference Include="MvvmCross.Forms">
-      <Version>6.4.2</Version>
-    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -101,89 +99,264 @@
     <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-58.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-87.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-80.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-120.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-120-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-180.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-20.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-58-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40-2.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-80-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-152.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-167.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-1024.png" />
-    <ImageAsset Include="Assets.xcassets\Icon.imageset\appicon.png" />
-    <ImageAsset Include="Assets.xcassets\Icon.imageset\appicon%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Icon.imageset\appicon%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Icon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Icon.imageset\vector.pdf" />
-    <ImageAsset Include="Assets.xcassets\Icon.imageset\vector-1.pdf" />
-    <ImageAsset Include="Assets.xcassets\Icon.imageset\Untitled.png" />
-    <ImageAsset Include="Assets.xcassets\Icon.imageset\Untitled%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Icon.imageset\Untitled%403x.png" />
-    <ImageAsset Include="Assets.xcassets\factory.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\world.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\world.imageset\world.pdf" />
-    <ImageAsset Include="Assets.xcassets\world.imageset\world.png" />
-    <ImageAsset Include="Assets.xcassets\world.imageset\world%402x.png" />
-    <ImageAsset Include="Assets.xcassets\world.imageset\world%403x.png" />
-    <ImageAsset Include="Assets.xcassets\factory.imageset\factory.png" />
-    <ImageAsset Include="Assets.xcassets\factory.imageset\factory%402x.png" />
-    <ImageAsset Include="Assets.xcassets\factory.imageset\factory%403x.png" />
-    <ImageAsset Include="Assets.xcassets\facebook.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\facebook.imageset\facebook.png" />
-    <ImageAsset Include="Assets.xcassets\facebook.imageset\facebook%402x.png" />
-    <ImageAsset Include="Assets.xcassets\facebook.imageset\facebook%403x.png" />
-    <ImageAsset Include="Assets.xcassets\twitter.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\twitter.imageset\twitter.png" />
-    <ImageAsset Include="Assets.xcassets\twitter.imageset\twitter%402x.png" />
-    <ImageAsset Include="Assets.xcassets\twitter.imageset\twitter%403x.png" />
-    <ImageAsset Include="Assets.xcassets\internet.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\internet.imageset\internet.png" />
-    <ImageAsset Include="Assets.xcassets\internet.imageset\internet%402x.png" />
-    <ImageAsset Include="Assets.xcassets\internet.imageset\internet%403x.png" />
-    <ImageAsset Include="Assets.xcassets\hops.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\beer.png" />
-    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\beer%402x.png" />
-    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\beer%403x.png" />
-    <ImageAsset Include="Assets.xcassets\percent.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\percent.imageset\percentage.png" />
-    <ImageAsset Include="Assets.xcassets\percent.imageset\percentage%402x.png" />
-    <ImageAsset Include="Assets.xcassets\percent.imageset\percentage%403x.png" />
-    <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29.png" />
-    <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29%402x.png" />
-    <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29%403x.png" />
-    <ImageAsset Include="Assets.xcassets\pbu.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\pbu_grey.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\pbu_grey.imageset\pbu_grey.png" />
-    <ImageAsset Include="Assets.xcassets\pbu_grey.imageset\pbu_grey%402x.png" />
-    <ImageAsset Include="Assets.xcassets\pbu_grey.imageset\pbu_grey%403x.png" />
-    <ImageAsset Include="Assets.xcassets\pbu.imageset\pbu-1.png" />
-    <ImageAsset Include="Assets.xcassets\pbu.imageset\pbu%402x-1.png" />
-    <ImageAsset Include="Assets.xcassets\pbu.imageset\pbu%403x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-120-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-58-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-80-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\beerstyle_dark.imageset\beerstyle-dark.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\facebook_dark.imageset\facebook-dark.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\factory_dark.imageset\factory-dark.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\hops_dark.imageset\hops-dark.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Icon.imageset\appicon.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Icon.imageset\appicon%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Icon.imageset\appicon%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Icon.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Icon.imageset\vector.pdf">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Icon.imageset\vector-1.pdf">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Icon.imageset\Untitled.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Icon.imageset\Untitled%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Icon.imageset\Untitled%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\factory.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\beerstyle_dark.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\facebook_dark.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\factory_dark.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\hops_dark.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\internet_dark.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\percent_dark.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\twitter_dark.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\world_dark.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\internet_dark.imageset\internet-dark.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\percent_dark.imageset\percent-dark.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\twitter_dark.imageset\twitter-dark.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\world_dark.imageset\world-dark.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\world.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\world.imageset\world.pdf">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\world.imageset\world.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\world.imageset\world%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\world.imageset\world%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\factory.imageset\factory.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\factory.imageset\factory%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\factory.imageset\factory%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\facebook.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\facebook%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\facebook%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\twitter.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\twitter.imageset\twitter.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\twitter.imageset\twitter%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\twitter.imageset\twitter%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\internet.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\internet.imageset\internet.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\internet.imageset\internet%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\internet.imageset\internet%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\hops.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\beer.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\beer%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\beerstyle.imageset\beer%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\percent.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\percent.imageset\percentage.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\percent.imageset\percentage%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\percent.imageset\percentage%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\hops.imageset\food-and-restaurant %281%29%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\pbu.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\pbu_grey.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\pbu_grey.imageset\pbu_grey.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\pbu_grey.imageset\pbu_grey%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\pbu_grey.imageset\pbu_grey%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\pbu.imageset\pbu-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\pbu.imageset\pbu%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\pbu.imageset\pbu%403x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="Assets.xcassets\Icon.imageset\" />
-    <Folder Include="Assets.xcassets\factory.imageset\" />
-    <Folder Include="Assets.xcassets\world.imageset\" />
-    <Folder Include="Assets.xcassets\facebook.imageset\" />
-    <Folder Include="Assets.xcassets\twitter.imageset\" />
-    <Folder Include="Assets.xcassets\internet.imageset\" />
-    <Folder Include="Assets.xcassets\hops.imageset\" />
-    <Folder Include="Assets.xcassets\beerstyle.imageset\" />
-    <Folder Include="Assets.xcassets\percent.imageset\" />
-    <Folder Include="Assets.xcassets\pbu.imageset\" />
-    <Folder Include="Assets.xcassets\pbu_grey.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />

@@ -3,41 +3,31 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Cicerone.Core.Models;
 using Cicerone.Core.Services.Beers;
-using MvvmCross.Commands;
+using MvvmHelpers.Commands;
 using Xamarin.Essentials;
 
 namespace Cicerone.Core.ViewModels
 {
-	public class BeerDetailsViewModel : BaseViewModel<long>
+	public class BeerDetailsViewModel : BaseViewModel
 	{
 		private readonly IBeerService _beerService;
-		private long _beerId;
 		private const string TwitterUrl = "https://www.twitter.com";
 
 		private ICommand _refreshCommand;
-		public ICommand RefreshCommand => _refreshCommand ?? (_refreshCommand = new MvxAsyncCommand(FetchBeer));
+		public ICommand RefreshCommand => _refreshCommand ?? (_refreshCommand = new AsyncCommand(FetchBeer));
 
 		private ICommand _navToExternalCommand;
-		public ICommand NavToExternalCommand => _navToExternalCommand ?? (_navToExternalCommand = new MvxAsyncCommand<string>(NavigateExternal));
+		public ICommand NavToExternalCommand => _navToExternalCommand ?? (_navToExternalCommand = new AsyncCommand<string>(NavigateExternal));
 
 		private ICommand _navToTwitterCommand;
-		public ICommand NavToTwitterCommand => _navToTwitterCommand ?? (_navToTwitterCommand = new MvxAsyncCommand<string>(NavToTwitter));
+		public ICommand NavToTwitterCommand => _navToTwitterCommand ?? (_navToTwitterCommand = new AsyncCommand<string>(NavToTwitter));
 
-		private BeerDetail _beer;
-		public BeerDetail Beer
-		{
-			get => _beer;
-			set => SetProperty(ref _beer, value);
-		}
+		public BeerDetail Beer { get; set; }
+		public long BeerId { get; set; }
 
 		public BeerDetailsViewModel(IBeerService beerService)
 		{
 			_beerService = beerService;
-		}
-
-		public override void Prepare(long parameter)
-		{
-			_beerId = parameter;
 		}
 
 		public override async Task Initialize()
@@ -48,7 +38,7 @@ namespace Cicerone.Core.ViewModels
 		private async Task FetchBeer()
 		{
 			IsBusy = true;
-			Beer = await _beerService.GetBeerDetails(_beerId);
+			Beer = await _beerService.GetBeerDetails(BeerId);
 			IsBusy = false;
 		}
 

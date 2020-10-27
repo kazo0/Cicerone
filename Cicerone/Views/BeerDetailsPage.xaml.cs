@@ -1,16 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using Cicerone.Core.ViewModels;
-using MvvmCross.Forms.Views;
+﻿using Cicerone.Core.ViewModels;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Cicerone.Views
 {
-	public partial class BeerDetailsPage : MvxContentPage<BeerDetailsViewModel>
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class BeerDetailsPage : ContentPage
 	{
-		public BeerDetailsPage()
+		public BeerDetailsPage(long beerId)
 		{
 			InitializeComponent();
+			var vm = Startup.ServiceProvider.GetService<BeerDetailsViewModel>();
+			vm.BeerId = beerId;
+			
+			BindingContext = vm;
+		}
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			MainThread.BeginInvokeOnMainThread(() => ((BaseViewModel)BindingContext).Initialize());
 		}
 	}
 }
