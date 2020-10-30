@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Cicerone.Core.ViewModels
 {
 	public class SearchViewModel : BaseViewModel
 	{
+
 		private const int PageSize = 25;
 
 		private readonly IBeerService _beerService;

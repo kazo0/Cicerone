@@ -8,50 +8,56 @@
 			 mc:Ignorable="d">
 	<Application.Resources>
 		<ResourceDictionary>
-			<ResourceDictionary>
-				<Color x:Key="BackgroundColorDark">#121212</Color>
-				<Color x:Key="BackgroundColorLight">#EFF2F5</Color>
+			<Color x:Key="BackgroundColorDark">#121212</Color>
+			<Color x:Key="BackgroundColorLight">#EFF2F5</Color>
 
-				<Color x:Key="TextPrimaryColorDark">#FFFFFF</Color>
-				<Color x:Key="TextPrimaryColorLight">#323130</Color>
+			<Color x:Key="TextPrimaryColorDark">#FFFFFF</Color>
+			<Color x:Key="TextPrimaryColorLight">#323130</Color>
 
-				<Color x:Key="PrimaryColor">#f3bf41</Color>
+			<Color x:Key="PrimaryColor">#f3bf41</Color>
 
-				<Style TargetType="Page"
-					   ApplyToDerivedTypes="True">
-					<Setter Property="BackgroundColor"
-							Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
-				</Style>
+			<Style TargetType="Page"
+				   ApplyToDerivedTypes="True">
+				<Setter Property="BackgroundColor"
+						Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+			</Style>
 
-				<Style TargetType="NavigationPage">
-					<Setter Property="BarBackgroundColor"
-							Value="{StaticResource PrimaryColor}" />
-				</Style>
+			<Style TargetType="Frame"
+				   ApplyToDerivedTypes="True">
+				<Setter Property="BackgroundColor"
+						Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+			</Style>
 
-				<Style TargetType="Frame"
-					   ApplyToDerivedTypes="True">
-					<Setter Property="BackgroundColor"
-							Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
-				</Style>
+			<Style TargetType="Label">
+				<Setter Property="TextColor"
+						Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
+			</Style>
 
-				<Style TargetType="SearchBar"
-					   ApplyToDerivedTypes="True">
-					<Setter Property="BackgroundColor"
-							Value="{StaticResource PrimaryColor}" />
-				</Style>
+			<Style TargetType="ActivityIndicator">
+				<Setter Property="Color"
+						Value="{StaticResource PrimaryColor}" />
+			</Style>
 
-				<Style TargetType="Label">
-					<Setter Property="TextColor"
-							Value="{AppThemeBinding Dark={StaticResource TextPrimaryColorDark}, Light={StaticResource TextPrimaryColorLight}}" />
-				</Style>
+			<Style x:Key="BaseStyle"
+				   TargetType="Element"
+				   ApplyToDerivedTypes="True">
+				<Setter Property="Shell.BackgroundColor"
+						Value="{AppThemeBinding {StaticResource PrimaryColor}}" />
+				<Setter Property="Shell.ForegroundColor"
+						Value="White" />
+				<Setter Property="Shell.TitleColor"
+						Value="White" />
+				<Setter Property="Shell.TabBarBackgroundColor"
+						Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+				<Setter Property="Shell.NavBarHasShadow"
+						Value="false" />
+			</Style>
 
-				<Style TargetType="ActivityIndicator">
-					<Setter Property="Color"
-							Value="{StaticResource PrimaryColor}" />
-				</Style>
+			<Style BasedOn="{StaticResource BaseStyle}"
+				   ApplyToDerivedTypes="True"
+				   TargetType="Tab" />
 
-				<converters:ReverseBoolConverter x:Key="reverseBoolConverter" />
-			</ResourceDictionary>
+			<converters:ReverseBoolConverter x:Key="reverseBoolConverter" />
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

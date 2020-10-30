@@ -11,7 +11,7 @@ namespace Cicerone
 		{
 			InitializeComponent();
 			Startup.Init();
-			MainPage = new NavigationPage(Startup.ServiceProvider.GetService<SearchPage>());
+			MainPage = Startup.ServiceProvider.GetService<AppShell>();
 		}
 	}
 }

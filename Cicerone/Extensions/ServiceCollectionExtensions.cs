@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Linq;
 using Xamarin.Forms;
+using Cicerone.Views;
 
 namespace Cicerone.Extensions
 {
@@ -18,7 +19,7 @@ namespace Cicerone.Extensions
 
 		public static void AddPages(this IServiceCollection services)
 		{
-			services.AddAllSubclassesOf<Page>(typeof(App).Assembly);
+			services.AddAllSubclassesOf<Page>(typeof(AppShell).Assembly);
 		}
 
 		public static void AddAllSubclassesOf<T>(

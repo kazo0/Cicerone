@@ -4,20 +4,23 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 			 xmlns:viewModels="clr-namespace:Cicerone.Core.ViewModels;assembly=Cicerone.Core"
+			 xmlns:models="clr-namespace:Cicerone.Core.Models;assembly=Cicerone.Core"
 			 Title="Search"
 			 Visual="Material"
-			 ios:Page.UseSafeArea="true">
-	<Grid RowDefinitions="Auto, *">
-		<SearchBar x:Name="searchBar"
-				   Placeholder="Search for a brew"
-				   VerticalOptions="Start"
-				   FontSize="Medium"
-				   IsEnabled="True"
-				   IsSpellCheckEnabled="False"
-				   SearchCommand="{Binding SearchCommand}"
-				   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
+			 ios:Page.UseSafeArea="true"
+			 x:DataType="viewModels:SearchViewModel">
+	<Shell.SearchHandler>
+		<SearchHandler x:Name="searchHandler"
+					   Placeholder="Search for a brew"
+					   TextColor="White"
+					   PlaceholderColor="White"
+					   CancelButtonColor="White"
+					   BackgroundColor="{StaticResource PrimaryColor}"
+					   Command="{Binding SearchCommand}"
+					   CommandParameter="{Binding Query, Source={x:Reference searchHandler}}"/>
+	</Shell.SearchHandler>
+	<Grid>
 		<CollectionView ItemsSource="{Binding Beers}"
-						Grid.Row="1"
 						SelectionMode="None"
 						RemainingItemsThreshold="{Binding ItemTreshold}"
 						RemainingItemsThresholdReachedCommand="{Binding ThresholdReachedCommand}"
@@ -27,26 +30,19 @@
 				<Grid>
 					<Label Text="No beers to display"
 						   HorizontalOptions="CenterAndExpand"
-						   VerticalOptions="CenterAndExpand"/>
+						   VerticalOptions="CenterAndExpand" />
 				</Grid>
 			</CollectionView.EmptyView>
 			<CollectionView.ItemTemplate>
-				<DataTemplate>
+				<DataTemplate x:DataType="models:BeerSummary">
 					<ContentView>
 						<Frame Margin="10">
 							<Frame.GestureRecognizers>
 								<TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SearchViewModel}}, Path=SelectBeerCommand}"
 													  CommandParameter="{Binding}" />
 							</Frame.GestureRecognizers>
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="1*" />
-									<ColumnDefinition Width="4*" />
-								</Grid.ColumnDefinitions>
-								<Grid.RowDefinitions>
-									<RowDefinition Height="1*" />
-									<RowDefinition Height="1*" />
-								</Grid.RowDefinitions>
+							<Grid ColumnDefinitions="1*, 4*"
+								  RowDefinitions="1*, 1*">
 								<Image Grid.RowSpan="2"
 									   Source="{Binding BeerLabel}" />
 								<Label Grid.Column="1"
@@ -73,10 +69,9 @@
 				</DataTemplate>
 			</CollectionView.ItemTemplate>
 		</CollectionView>
-		<ActivityIndicator Grid.Row="1"
-						   VerticalOptions="Center"
+		<ActivityIndicator VerticalOptions="Center"
 						   HorizontalOptions="Center"
 						   IsVisible="{Binding IsBusy}"
-						   IsRunning="{Binding IsBusy}"/>
+						   IsRunning="{Binding IsBusy}" />
 	</Grid>
 </ContentPage>

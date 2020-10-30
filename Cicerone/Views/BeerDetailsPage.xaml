@@ -5,6 +5,7 @@
 			 xmlns:viewModels="clr-namespace:Cicerone.Core.ViewModels;assembly=Cicerone.Core"
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 			 xmlns:converters="clr-namespace:Cicerone.Converters"
+			 x:DataType="viewModels:BeerDetailsViewModel"
 			 Title="{Binding Beer.BeerName}"
 			 Visual="Material"
 			 ios:Page.UseSafeArea="true">
@@ -34,12 +35,7 @@
 								   HorizontalOptions="Center"
 								   VerticalOptions="End" />
 						</StackLayout>
-						<Grid Margin="10,20,10,10">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="1*" />
-								<ColumnDefinition Width="1*" />
-								<ColumnDefinition Width="1*" />
-							</Grid.ColumnDefinitions>
+						<Grid Margin="10,20,10,10" ColumnDefinitions="1*, 1*, 1*">
 							<StackLayout>
 								<Image Source="{AppThemeBinding Light=percent, Dark=percent_dark}"
 									   HeightRequest="20"
@@ -71,12 +67,7 @@
 							   Text="{Binding Beer.BeerDescription}" />
 						<BoxView HeightRequest="1"
 								 Color="LightGray" />
-						<Grid Margin="10">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="1*" />
-								<ColumnDefinition Width="1*" />
-								<ColumnDefinition Width="1*" />
-							</Grid.ColumnDefinitions>
+						<Grid Margin="10" ColumnDefinitions="1*, 1*, 1*">
 							<ImageButton Source="{AppThemeBinding Light=facebook, Dark=facebook_dark}"
 										 WidthRequest="30"
 										 HeightRequest="30"
