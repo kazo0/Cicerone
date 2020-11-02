@@ -10,6 +10,7 @@
 		<ResourceDictionary>
 			<Color x:Key="BackgroundColorDark">#121212</Color>
 			<Color x:Key="BackgroundColorLight">#EFF2F5</Color>
+			<Color x:Key="FrameBackgroundColorDark">#1AFFFFFF</Color>
 
 			<Color x:Key="TextPrimaryColorDark">#FFFFFF</Color>
 			<Color x:Key="TextPrimaryColorLight">#323130</Color>
@@ -25,7 +26,7 @@
 			<Style TargetType="Frame"
 				   ApplyToDerivedTypes="True">
 				<Setter Property="BackgroundColor"
-						Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
+						Value="{AppThemeBinding Dark={StaticResource FrameBackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" />
 			</Style>
 
 			<Style TargetType="Label">

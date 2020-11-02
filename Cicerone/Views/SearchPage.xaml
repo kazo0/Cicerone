@@ -17,7 +17,16 @@
 					   CancelButtonColor="White"
 					   BackgroundColor="{StaticResource PrimaryColor}"
 					   Command="{Binding SearchCommand}"
-					   CommandParameter="{Binding Query, Source={x:Reference searchHandler}}"/>
+					   CommandParameter="{Binding Query, Source={x:Reference searchHandler}}"
+					   ShowsResults="False">
+			<SearchHandler.Keyboard>
+				<Keyboard x:FactoryMethod="Create">
+					<x:Arguments>
+						<KeyboardFlags>CapitalizeWord</KeyboardFlags>
+					</x:Arguments>
+				</Keyboard>
+			</SearchHandler.Keyboard>
+		</SearchHandler>
 	</Shell.SearchHandler>
 	<Grid>
 		<CollectionView ItemsSource="{Binding Beers}"
